@@ -6,99 +6,34 @@ namespace Projet_3
 {
     public class Shops
     {
-        public int CodeShopId
-        {
-            get => default;
-            set
-            {
-            }
-        }
-
-        public string StreetName
-        {
-            get => default;
-            set
-            {
-            }
-        }
-
-        public int StreetNumber
-        {
-            get => default;
-            set
-            {
-            }
-        }
-
-        public string City
-        {
-            get => default;
-            set
-            {
-            }
-        }
-
-        public int Stock
-        {
-            get => default;
-            set
-            {
-            }
-        }
-
-        public string County
-        {
-            get => default;
-            set
-            {
-            }
-        }
-
-        public string District
-        {
-            get => default;
-            set
-            {
-            }
-        }
-
-        public string Country
-        {
-            get => default;
-            set
-            {
-            }
-        }
-
-        public int ZipCode
-        {
-            get => default;
-            set
-            {
-            }
-        }
-
+        public int CodeShopId {get; set; }
+        public string Name { get; set; }
+        public string StreetName { get; set; }
+        public int StreetNumber { get; set; }
+        public string City { get; set; }
+        public int Stock { get; set; }
+        public string County { get; set; }
+        public string District { get; set; }
+        public string Country { get; set; }
+        public int ZipCode { get; set; }
         public List<Magazines> MagazinesList { get; set; }
 
-        public void FilterByCity()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void FilterByCountry()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void FilterByCounty()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void FilterByDistrict()
-        {
-            throw new System.NotImplementedException();
-        }
+        //public void FilterByCity()
+        //{
+        //    throw new System.NotImplementedException();
+        //}
+        //public void FilterByCountry()
+        //{
+        //    throw new System.NotImplementedException();
+        //}
+        //public void FilterByCounty()
+        //{
+        //    throw new System.NotImplementedException();
+        //}
+        //public void FilterByDistrict()
+        //{
+        //    throw new System.NotImplementedException();
+        //}
 
         public void AddShop()
         {
@@ -117,6 +52,7 @@ namespace Projet_3
 
         public void DisplayDefaultShopList()
         {
+            //prend en argument une liste de magasins
             throw new System.NotImplementedException();
         }
     }

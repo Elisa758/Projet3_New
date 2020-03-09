@@ -57,7 +57,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Projet_3.DBQuery">
-    <Position X="6" Y="5" Width="1.5" />
+    <Position X="11.25" Y="4.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAIAABgAAAAAAAAAAAAAAQA=</HashCode>
       <FileName>DBQuery.cs</FileName>
@@ -82,6 +82,13 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>MonthlyNewsPaper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Projet_3.Filter">
+    <Position X="5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAQAAAACAAAAAAABAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Filter.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
