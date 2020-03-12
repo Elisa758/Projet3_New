@@ -66,9 +66,22 @@ namespace Projet_3
                                 where co.Name == "county1" 
                                 select co).FirstOrDefault();
 
+                var districtName = (from di in context.District
+                                    where di.Name == "district1"
+                                    select di).FirstOrDefault();
+
+                var countryName = (from cou in context.Country
+                                   where cou.Name == "France"
+                                   select cou).FirstOrDefault();
+                              
+
                 //DisplayInformation.DisplayDefaultShop();
-                Filter.FilterByCity(cityName);
-                Filter.FilterByCounty(countyName);
+                //Filter.FilterByCity(cityName);
+                //Filter.FilterByCounty(countyName);
+
+                //Filter.FilterByDistrict(districtName);
+
+                Filter.FilterByCountry(countryName);
 
 
 

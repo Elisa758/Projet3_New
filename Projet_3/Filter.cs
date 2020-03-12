@@ -7,10 +7,6 @@ namespace Projet_3
 {
     public class Filter
     {
-        // voir pour passer cette en classe en abstract (ou interface) et faire une classe ShopFilter et JournalFilter qui en hériteront 
-        //=> classe doit être extensible et non modifiable;
-        //journalFilter par titre, date, éditeur,magasins
-
         public static void FilterByCity(City city)
         {
             using (var context = new ShopContext())
@@ -28,14 +24,48 @@ namespace Projet_3
             }
         }
 
-        public void FilterByCountry()
+        public static void FilterByCountry(Country country)
         {
-            
+            using (var context = new ShopContext())
+            {
+                var shopList = from s in context.Shops
+                               join c in context.City
+                               on s.City.CityId equals c.CityId
+                               join co in context.County
+                               on c.County.CountyId equals co.CountyId
+                               join di in context.District
+                               on co.District.DistrictId equals di.DistrictId
+                               join cou in context.Country
+                               on di.Country.CountryId equals cou.CountryId
+                               where cou.CountryId == country.CountryId
+                               select new { CountryName= cou.Name, DistrictName = di.Name, CountyName = co.Name, c.Name, s.ShopId, shopName = s.Name };
+
+                foreach (var shop in shopList)
+                {
+                    Console.WriteLine(shop);
+                }
+            }
         }
 
-        public void FilterByDistrict()
+        public static void FilterByDistrict(District district)
         {
-            throw new System.NotImplementedException();
+           using (var context = new ShopContext())
+           {
+                var shopList = from s in context.Shops
+                               join c in context.City
+                               on s.City.CityId equals c.CityId
+                               join co in context.County
+                               on c.County.CountyId equals co.CountyId
+                               join di in context.District
+                               on co.District.DistrictId equals di.DistrictId
+                               where di.DistrictId == district.DistrictId
+                               select new { DistrictName = di.Name, CountyName = co.Name, c.Name, s.ShopId, shopName = s.Name };
+
+                foreach(var shop in shopList)
+                {
+                    Console.WriteLine(shop);
+                }
+           }
         }
 
         public static void FilterByCounty(County county)
