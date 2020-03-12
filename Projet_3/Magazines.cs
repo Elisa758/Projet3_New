@@ -4,25 +4,16 @@ using System.Text;
 
 namespace Projet_3
 {
-    public abstract class Magazines
+    public class Magazine
     {
-        public int Id
-        {
-            get => default;
-            set
-            {
-            }
-        }
+        public Guid MagazineId { get; set; }
+        public String Name { get; set; }
+        public Editor Editor { get; set; }
+        public ICollection<ShopMagazine> ManyShopMagazines { get; set; }
 
-        public String Name
-        {
-            get => default;
-            set
-            {
-            }
-        }
+        public ICollection<MagazineOrder> ManyMagazineOrders { get; set; }
 
-        public Editors Editor
+        public int PeriodicityDays
         {
             get => default;
             set

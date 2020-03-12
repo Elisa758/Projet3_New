@@ -4,8 +4,9 @@ using System.Text;
 
 namespace Projet_3
 {
-    public class IO
+    public class Logger
     {
+        //static ou singleton
         public void DisplayErrorMessage()
         {
             throw new System.NotImplementedException();

@@ -4,11 +4,7 @@ using System.Text;
 
 namespace Projet_3
 {
-    public class AutomaticOrders : Orders
+    public class AutomaticOrder : Order
     {
-        public override void CreateOrder()
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }

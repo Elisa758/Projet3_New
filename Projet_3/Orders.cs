@@ -4,67 +4,15 @@ using System.Text;
 
 namespace Projet_3
 {
-    public abstract class Orders
+    public class Order
     {
-        public int Id
-        {
-            get => default;
-            set
-            {
-            }
-        }
+        public Guid OrderId { get; set; }
+        public ICollection<MagazineOrder> ManyMagazineOrders { get; set; }
 
-        public List<Magazines> MagazinesList
-        {
-            get => default;
-            set
-            {
-            }
-        }
+        public DateTime OrderDate { get; set; }
 
-        public int Quantity
-        {
-            get => default;
-            set
-            {
-            }
-        }
+        public DateTime DeliveryDate { get; set; }
 
-        public DateTime OrderDate
-        {
-            get => default;
-            set
-            {
-            }
-        }
-
-        public DateTime DeliveryDate
-        {
-            get => default;
-            set
-            {
-            }
-        }
-
-        public Shops Shop
-        {
-            get => default;
-            set
-            {
-            }
-        }
-
-        public string Status
-        {
-            get => default;
-            set
-            {
-            }
-        }
-
-        public virtual void CreateOrder()
-        {
-            throw new System.NotImplementedException();
-        }
+        public ICollection<OrderShop> ManyOrderShops { get; set; }
     }
 }

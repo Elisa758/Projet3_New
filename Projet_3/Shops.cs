@@ -4,56 +4,17 @@ using System.Text;
 
 namespace Projet_3
 {
-    public class Shops
+    public class Shop
     {
-        public int CodeShopId {get; set; }
+        public Guid ShopId {get; set; }
         public string Name { get; set; }
         public string StreetName { get; set; }
         public int StreetNumber { get; set; }
-        public string City { get; set; }
-        public int Stock { get; set; }
-        public string County { get; set; }
-        public string District { get; set; }
-        public string Country { get; set; }
+        public City City { get; set; }
         public int ZipCode { get; set; }
-        public List<Magazines> MagazinesList { get; set; }
+        public ICollection<ShopMagazine> ManyShopMagazines { get; set; }
+        public ICollection<PersonShop> ManyPersonShops { get; set; }
+        public ICollection<OrderShop> ManyOrderShops { get; set; }
 
-        //public void FilterByCity()
-        //{
-        //    throw new System.NotImplementedException();
-        //}
-        //public void FilterByCountry()
-        //{
-        //    throw new System.NotImplementedException();
-        //}
-        //public void FilterByCounty()
-        //{
-        //    throw new System.NotImplementedException();
-        //}
-        //public void FilterByDistrict()
-        //{
-        //    throw new System.NotImplementedException();
-        //}
-
-        public void AddShop()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void DeleteShop()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void DisplayInfoShop()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void DisplayDefaultShopList()
-        {
-            //prend en argument une liste de magasins
-            throw new System.NotImplementedException();
-        }
     }
 }

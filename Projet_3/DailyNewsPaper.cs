@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Projet_3
 {
-    public class DailyNewsPaper : Magazines
+    public class DailyNewsPaper : Magazine
     {
     }
 }

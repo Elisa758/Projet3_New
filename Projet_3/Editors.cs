@@ -4,30 +4,9 @@ using System.Text;
 
 namespace Projet_3
 {
-    public class Editors
+    public class Editor
     {
-        public int Id
-        {
-            get => default;
-            set
-            {
-            }
-        }
-
-        public int Name
-        {
-            get => default;
-            set
-            {
-            }
-        }
-
-        public List<Magazines> MagazinesList
-        {
-            get => default;
-            set
-            {
-            }
-        }
+        public Guid EditorId { get; set; }
+        public int Name { get; set; }
     }
 }

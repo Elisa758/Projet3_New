@@ -25,5 +25,25 @@ namespace Projet_3
         {
             throw new System.NotImplementedException();
         }
+
+        public void AddShop()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void DeleteShop()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void DisplayInfoShop()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void DisplayDefaultShopList()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
