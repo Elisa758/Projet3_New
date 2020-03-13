@@ -15,6 +15,7 @@ namespace Projet_3
         public virtual DbSet<County> County { get; set; }
         public virtual DbSet<District> District { get; set; }
         public virtual DbSet<Country> Country { get; set; }
+        public virtual DbSet<Editor> Editor { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder builder)

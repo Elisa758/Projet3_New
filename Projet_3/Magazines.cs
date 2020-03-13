@@ -10,15 +10,7 @@ namespace Projet_3
         public String Name { get; set; }
         public Editor Editor { get; set; }
         public ICollection<ShopMagazine> ManyShopMagazines { get; set; }
-
         public ICollection<MagazineOrder> ManyMagazineOrders { get; set; }
-
-        public int PeriodicityDays
-        {
-            get => default;
-            set
-            {
-            }
-        }
+        public int PeriodicityDays { get; set; }
     }
 }

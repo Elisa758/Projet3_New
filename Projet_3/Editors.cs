@@ -7,6 +7,6 @@ namespace Projet_3
     public class Editor
     {
         public Guid EditorId { get; set; }
-        public int Name { get; set; }
+        public string Name { get; set; }
     }
 }
