@@ -86,5 +86,72 @@ namespace Projet_3
                 }
             }
         }
+
+        public static List<Shop> FilterTestCity (City city)
+        {
+            List<Shop> shopList = new List<Shop>();
+
+            foreach(Shop shop in city.Shops)
+            {
+                shopList.Add(shop);
+            }
+            return shopList;
+
+        }
+
+        public static List<Shop> FilterTestCounty(County county)
+        {
+            List<Shop> shopList = new List<Shop>();
+
+            foreach (City city in county.Cities)
+            {
+                foreach(Shop shop in city.Shops)
+                {
+                    shopList.Add(shop);
+                }
+                
+            }
+            return shopList;
+
+        }
+
+        public static List<Shop> FilterTestDistrict(District district)
+        {
+            List<Shop> shopList = new List<Shop>();
+            foreach (County county in district.Counties)
+            {
+                foreach (City city in county.Cities)
+                {
+                    foreach (Shop shop in city.Shops)
+                    {
+                        shopList.Add(shop);
+                    }
+
+                }
+            }
+            return shopList;
+
+        }
+
+        public static List<Shop> FilterTestCountry(Country country)
+        {
+            List<Shop> shopList = new List<Shop>();
+            foreach (District district in country.Districts)
+            {
+                foreach (County county in district.Counties)
+                {
+                    foreach (City city in county.Cities)
+                    {
+                        foreach (Shop shop in city.Shops)
+                        {
+                            shopList.Add(shop);
+                        }
+
+                    }
+                }
+            }
+            return shopList;
+
+        }
     }
 }
