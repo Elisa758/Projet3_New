@@ -14,8 +14,8 @@ namespace Test_Projet3
         [Test]
         public void TestFilterByCity()
         {
-            List<Shop> shopList = new List<Shop>() 
-            { 
+            List<Shop> shopList = new List<Shop>()
+            {
                 new Shop { Name = "shop2city2" },
                 new Shop {Name = "shop1city2"}
             };
@@ -25,9 +25,9 @@ namespace Test_Projet3
 
             List<Shop> shopByCity = Filter.FilterTestCity(newCity);
 
-            Assert.AreEqual(shopList,shopByCity);
+            Assert.AreEqual(shopList, shopByCity);
         }
-        
+
         [Test]
         public void TestFilterByCounty()
         {
@@ -46,7 +46,7 @@ namespace Test_Projet3
             newCounty.Cities = newCity;
 
             List<Shop> shopByCounty = Filter.FilterTestCounty(newCounty);
-          
+
             Assert.AreEqual(shopList, shopByCounty);
         }
 
@@ -75,7 +75,7 @@ namespace Test_Projet3
             Assert.AreEqual(shopList, shopByDistrict);
         }
 
-        
+
         [Test]
         public void TestFilterByCountry()
         {
@@ -104,5 +104,15 @@ namespace Test_Projet3
             List<Shop> shopByCountry = Filter.FilterTestCountry(newCountry);
             Assert.AreEqual(shopList, shopByCountry);
         }
+
+        [Test]
+        public void TestAuthentification()
+        {
+            Person currentPerson = new Person("toto", "1234");
+            Person testPerson = new Person("toto", "1234");
+
+            Assert.IsTrue(Authentification.AuthentifyTest(currentPerson, testPerson));
+        }
+
     }
 }

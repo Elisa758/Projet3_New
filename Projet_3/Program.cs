@@ -11,7 +11,7 @@ namespace Projet_3
         {
 
             Person currentPerson = new Person();
-            Authentification.AuthentifyUser(currentPerson);
+            /*Authentification.AuthentifyUser(currentPerson);*/
 
 
             using(var context = new ShopContext())
