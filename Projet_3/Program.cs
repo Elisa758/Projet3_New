@@ -1,13 +1,18 @@
 ﻿using System;
 using System.Linq;
 using System.Collections.Generic;
+
 namespace Projet_3
 {
-    class Program
+    public class Program
     {
+     
         static void Main(string[] args)
         {
-            using(var context = new ShopContext())
+            Person currentPerson = new Person();
+            Authentification.AuthentifyUser(currentPerson);
+
+            //using (var context = new ShopContext())
             {/*
                 context.Database.EnsureDeleted();
                 context.Database.EnsureCreated();
@@ -58,7 +63,7 @@ namespace Projet_3
                 context.AddRange(france);
                 context.SaveChanges(); */
 
-                var cityName = (from c in context.City
+               /* var cityName = (from c in context.City
                                 where c.Name == "city1" && c.ZipCode == 14943
                                 select c).FirstOrDefault();
 
@@ -72,7 +77,7 @@ namespace Projet_3
 
                 var countryName = (from cou in context.Country
                                    where cou.Name == "France"
-                                   select cou).FirstOrDefault();
+                                   select cou).FirstOrDefault(); */
                               
 
                 //DisplayInformation.DisplayDefaultShop();
@@ -81,7 +86,7 @@ namespace Projet_3
 
                 //Filter.FilterByDistrict(districtName);
 
-                Filter.FilterByCountry(countryName);
+               // Filter.FilterByCountry(countryName);
 
 
 
