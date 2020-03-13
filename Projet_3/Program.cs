@@ -9,7 +9,7 @@ namespace Projet_3
         {
             using(var context = new ShopContext())
             {
-                
+                /*
                 context.Database.EnsureDeleted();
                 context.Database.EnsureCreated();
                 //Shop Creation
@@ -17,42 +17,38 @@ namespace Projet_3
                 {
                     Name = "France",
                 };
-                france.Districts = GenerateDistrict(france, 3);
+                List<District> districtList = GenerateDistrict(france, 3);
+                List<County> countyList = new List<County>();
+                List<City> cityList = new List<City>();
 
-                List<City> cities = new List<City>();
-
-                foreach (var District in france.Districts)
+                foreach(District district in districtList)
                 {
-                    foreach (var County in District.Counties)
+                    district.Counties = GenerateCounty(district, 2);
+                    foreach (County county in district.Counties)
                     {
-                        foreach (var city in County.Cities)
+                        county.Cities = GenerateCity(county, 5);
+                        foreach(City city in county.Cities)
                         {
-                            cities.Add(city);
+                            cityList.Add(city);
+                            
                         }
                     }
                 }
-                for (int i = 1; i <= 3; i++)
+
+                for (int i = 0; i < 3; i++)
                 {
                     Random random = new Random();
-                    int rdm = random.Next(1, cities.Count);
-                    cities[rdm].Shops = GenerateShop(cities[rdm], 2);
+                    int rdm = random.Next(1, cityList.Count);
+                    cityList[rdm].Shops = GenerateShop(cityList[rdm], 2);
                 }
 
-
-
-                //Employee Creation and association with all shop
-                var manyPerson = from i in Enumerable.Range(0, 5)
-                                 select new Person { Name = "John" + i, Password = 1234 };
-                context.AddRange(manyPerson);
-
-                List<PersonShop> manyPersonShop = new List<PersonShop>();
                 List<Shop> manyShops = new List<Shop>();
-                       
-                foreach(var District in france.Districts)
+
+                foreach (var District in districtList)
                 {
-                    foreach(var County in District.Counties)
+                    foreach (var County in District.Counties)
                     {
-                        foreach(var City in County.Cities)
+                        foreach (var City in County.Cities)
                         {
                             if (City.Shops != null)
                             {
@@ -63,22 +59,16 @@ namespace Projet_3
                             }
                         }
                     }
-                } 
-
-                foreach(var shop in manyShops)
-                {
-                    foreach(var person in manyPerson)
-                    {
-                        var personShop = new PersonShop { PersonId = person.PersonId, Person = person, Shop = shop, ShopId = shop.ShopId };
-                        manyPersonShop.Add(personShop);
-                    }
-                    
                 }
+
+                //Employee Creation
+                var manyPersons = (from i in Enumerable.Range(0, 5)
+                                 select new Person { Name = "John" + i, Password = 1234 }).ToList();
+                context.AddRange(manyPersons);
 
                 //Magazine Creation
                 var editor1 = GenerateEditor("Faton");
                 var editor2 = GenerateEditor("Link Digital Spirit");
-
 
                 List<Magazine> magazines = GenerateMagazine(5);
                 foreach(Magazine mag in magazines)
@@ -95,32 +85,31 @@ namespace Projet_3
                 }
                 magazines.AddRange(magazines1);
 
-                List<ShopMagazine> manyShopMagazines = new List<ShopMagazine>();
-
-                foreach(var mag in magazines)
-                {
-                    foreach(var shops in manyShops)
-                    {
-                        var shopsMagazines = new ShopMagazine { MagazineId = mag.MagazineId, Magazine = mag, Shop = shops, ShopId = shops.ShopId };
-                        manyShopMagazines.Add(shopsMagazines);
-                    }
-                }
-
 
                 List<Order> manyOrders = GenerateOrder(3);
 
 
+                List<ShopMagazine> manyShopMagazines = AssociatedShopswithMagazines(manyShops, magazines);
+                List<PersonShop> manyPersonShop = AssociatedPersonsWithShops(manyPersons, manyShops);
+                List<MagazineOrder> magazineOrdersList = AssociationMagazineWithOrder(magazines, manyOrders);
+                List<OrderShop> orderShopsList = AssociationShopWithOrder(manyShops, manyOrders);
+
+                
+                
                 context.AddRange(magazines);
                 context.AddRange(manyShopMagazines);
                 context.AddRange(manyPersonShop);
+                context.AddRange(magazineOrdersList);                
                 context.AddRange(france);
-                context.SaveChanges();
+                context.AddRange(orderShopsList);
+                context.AddRange(cityList);
+                context.SaveChanges();*/
                 
 
                 //Requete pour liste magasin par défaut et filtrer
-                /*
+                
                 var cityName = (from c in context.City
-                                where c.Name == "city1" && c.ZipCode == 19459
+                                where c.Name == "city2" 
                                 select c).FirstOrDefault();
 
                 var countyName = (from co in context.County
@@ -128,19 +117,19 @@ namespace Projet_3
                                 select co).FirstOrDefault();
 
                 var districtName = (from di in context.District
-                                    where di.Name == "district1"
+                                    where di.Name == "district3"
                                     select di).FirstOrDefault();
 
                 var countryName = (from cou in context.Country
                                    where cou.Name == "France"
                                    select cou).FirstOrDefault();
 
-                */
+                
                 //DisplayInformation.DisplayDefaultShop();
                 //Filter.FilterByCity(cityName);
                 //Filter.FilterByCounty(countyName);
                 //Filter.FilterByDistrict(districtName);
-                //Filter.FilterByCountry(countryName);
+                Filter.FilterByCountry(countryName);
                 
 
             }
@@ -155,7 +144,7 @@ namespace Projet_3
                 var newDistrict = new District();
                 newDistrict.Name = "district" + i;
                 newDistrict.Country = country;
-                newDistrict.Counties = GenerateCounty(newDistrict,2);
+                //newDistrict.Counties = GenerateCounty(newDistrict,2);
 
                 districts.Add(newDistrict);
             }
@@ -170,7 +159,7 @@ namespace Projet_3
                 var newCounty = new County();
                 newCounty.Name = "county" + i;
                 newCounty.District = district;
-                newCounty.Cities = GenerateCity(newCounty,2);
+                //newCounty.Cities = GenerateCity(newCounty,2);
 
                 counties.Add(newCounty);
             }
@@ -213,20 +202,6 @@ namespace Projet_3
             return shopList;
 
         }
-        /*
-        static List<PersonShop> AssociatePersonToShop()
-        {
-
-        }
-
-        static List<Shop> GetShops()
-        {
-
-        }
-        static List<Person> GetPeople()
-        {
-
-        }*/
 
         static Editor GenerateEditor(string name)
         {
@@ -280,8 +255,72 @@ namespace Projet_3
 
         }
 
+        static List<OrderShop> AssociationShopWithOrder(List<Shop> manyShops, List<Order> manyOrders)
+        {
+            List<OrderShop> manyOrdersShops = new List<OrderShop>();
 
+            foreach (var order in manyOrders)
+            {
+                foreach (var shop in manyShops)
+                {
+                    var OrderShop = new OrderShop { Order = order, OrderId = order.OrderId, Shop = shop, ShopId = shop.ShopId };
+                    manyOrdersShops.Add(OrderShop);
+                }
+            }
+            return manyOrdersShops;
 
+        }
 
+        public static List<City> GetCityList(County county)
+        {
+            using (var context = new ShopContext())
+            {
+                List<City> cities = new List<City>();
+
+                var citiesList = from c in context.City.AsEnumerable()
+                                 where c.County.CountyId == county.CountyId
+                                 select c;
+                cities.AddRange(citiesList);
+                /*foreach (var District in france.Districts)
+                {
+                    foreach (var County in District.Counties)
+                    {
+                        foreach (var city in County.Cities)
+                        {
+                            cities.Add(city);
+                        }
+                    }
+                }*/
+                return cities;
+            }
+        }
+
+        static List<ShopMagazine> AssociatedShopswithMagazines(List<Shop> manyShops, List<Magazine> magazines)
+        {
+            List<ShopMagazine> manyShopMagazines = new List<ShopMagazine>();
+            foreach (var mag in magazines)
+            {
+                foreach (var shops in manyShops)
+                {
+                    var shopsMagazines = new ShopMagazine { MagazineId = mag.MagazineId, Magazine = mag, Shop = shops, ShopId = shops.ShopId };
+                    manyShopMagazines.Add(shopsMagazines);
+                }
+            }
+            return manyShopMagazines;
+        }
+
+        static List<PersonShop> AssociatedPersonsWithShops(List<Person>manyPersons, List<Shop>manyShops)
+        {
+            List<PersonShop> manyPersonShop = new List<PersonShop>();
+            foreach (var shop in manyShops)
+            {
+                foreach (var person in manyPersons)
+                {
+                    var personShop = new PersonShop { PersonId = person.PersonId, Person = person, Shop = shop, ShopId = shop.ShopId };
+                    manyPersonShop.Add(personShop);
+                }
+            }
+            return manyPersonShop;
+        }
     }
 }
