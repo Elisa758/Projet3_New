@@ -8,7 +8,16 @@ namespace Projet_3
     {
         public Guid PersonId { get; set; }
         public string Name { get; set; }
-        public int Password { get; set; }
+        public string Password { get; set; }
         public ICollection<PersonShop> ManyPersonShops { get; set; }
+
+        public Person(string name, string password)
+        {
+            Name = name;
+            Password = password;
+        }
+
+        public Person()
+        { }
     }
 }

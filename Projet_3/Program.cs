@@ -1,12 +1,19 @@
 ﻿using System;
 using System.Linq;
 using System.Collections.Generic;
+
 namespace Projet_3
 {
-    class Program
+    public class Program
     {
+     
         static void Main(string[] args)
         {
+
+            Person currentPerson = new Person();
+            /*Authentification.AuthentifyUser(currentPerson);*/
+
+
             using(var context = new ShopContext())
             {
                 /*
@@ -106,10 +113,13 @@ namespace Projet_3
                 context.SaveChanges();*/
                 
 
+
+
                 //Requete pour liste magasin par défaut et filtrer
                 
                 var cityName = (from c in context.City
                                 where c.Name == "city2" 
+
                                 select c).FirstOrDefault();
 
                 var countyName = (from co in context.County
@@ -122,15 +132,17 @@ namespace Projet_3
 
                 var countryName = (from cou in context.Country
                                    where cou.Name == "France"
-                                   select cou).FirstOrDefault();
+                                   select cou).FirstOrDefault(); 
+
+
 
                 
                 //DisplayInformation.DisplayDefaultShop();
                 //Filter.FilterByCity(cityName);
                 //Filter.FilterByCounty(countyName);
                 //Filter.FilterByDistrict(districtName);
-                Filter.FilterByCountry(countryName);
-                
+                // Filter.FilterByCountry(countryName);
+
 
             }
 
